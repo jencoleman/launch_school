@@ -1,0 +1,2 @@
+The error tells me that although the method tries to use a variable called 
+'shoes' locally, 'shoes' hasn't been set to a value, so its undefined.

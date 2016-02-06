@@ -1,0 +1,6 @@
+In the first case, the value 3 is printed to the screen.
+
+In the second case, an error is printed to the screen.
+
+The second case prints an error because x is set up as a local variable. Because 
+x has no value set globally, the program doesn't know what value to return for x.
