@@ -1,0 +1,5 @@
+1. arr is changed to a two-dimensional array containing 6 arrays.
+The program will return 1, the deleted number from arr[0].
+
+2. Arr is changed to a two-dimensional array containing two arrays.
+The program will return [1,2,3], the deleted item from arr[0].

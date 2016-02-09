@@ -1,0 +1,8 @@
+1. No. A has requires both key and value.
+
+2. Yes. An array item can be any data type, but there must be only one item.
+birds = {}
+dogs = {}
+fish = {}
+
+h_a = [ birds, dogs, fish]

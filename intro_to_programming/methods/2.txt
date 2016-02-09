@@ -1,0 +1,10 @@
+1. => 2
+
+2. prints 2 to screen, => nil
+
+3. prints "Joe" to screen, => "Joe"
+
+4. => "four"
+
+5. nothing => nil
+

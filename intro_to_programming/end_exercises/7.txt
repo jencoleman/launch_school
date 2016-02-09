@@ -1,0 +1,1 @@
+An array is a group of individual items. A hash is a group of key-value pairs.

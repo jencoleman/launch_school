@@ -1,0 +1,11 @@
+my_hash has a key of :x, but my_hash2 has a key set to x. And x was previously
+set equal to "hi there." So
+
+x = "hi there"
+my_hash = {x: "some value"}
+my_hash2 = {x => "some value"}
+
+means
+
+my_hash = {x: "some value"}
+my_hash2 = {"hi there" => "some value"}

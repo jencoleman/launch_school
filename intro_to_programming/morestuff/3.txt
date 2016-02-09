@@ -1,0 +1,2 @@
+Exception handling is a structure in the program to handle a possible error by
+changing the flow, but not exiting the program.

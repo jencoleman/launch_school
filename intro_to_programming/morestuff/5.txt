@@ -1,0 +1,1 @@
+The block doesn't have an ampersand, so it can't be passed as a parameter.

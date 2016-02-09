@@ -1,0 +1,1 @@
+It returns the numbers the original array for x.

@@ -1,0 +1,3 @@
+1. it prints FALSE to the screen, and returns nil
+2. it prints "Did you get it right?" to the screen and returns nil
+3. it prints "Alright now!" to the screen and returns nil

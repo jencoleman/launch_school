@@ -1,0 +1,1 @@
+The error can be fixed by added another 'end' at the very end of the method.

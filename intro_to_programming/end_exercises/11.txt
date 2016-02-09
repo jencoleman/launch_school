@@ -1,0 +1,1 @@
+I like ruby-doc.org because its easy to search, clear to read, and has good examples for the methods.
