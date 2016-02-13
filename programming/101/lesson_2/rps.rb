@@ -23,7 +23,7 @@ end
 prompt("Hello! Welcome to rock, paper, scissors game.")
 choice = ''
 
-VALID_CHOICES = %w(rock paper scissors)
+VALID_CHOICES = %w(rock paper scissors).freeze
 
 loop do
   prompt("Choose one: #{VALID_CHOICES.join(', ')}")
