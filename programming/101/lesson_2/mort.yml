@@ -1,0 +1,9 @@
+# mort.yml
+
+welcome: "Welcome to the mortgage calculator!"
+amt: "What is the loan amount? Please enter dollars and cents without letters or symbols."
+invalid_number: "Please enter a valid decimal, without letters, $, or % symbols."
+apr: "What is the loan APR? Please enter as a percentage without the percent symbol. Example: 4.89"
+duration: "What is the length of the loan term in years?"
+continue: "Would you like to do another calculation?"
+valediction: "Goodbye!"

@@ -1,3 +1,9 @@
 #calculator_messages.yml
 
 welcome: "Welcome! I am the calculator. What is your name?"
+valid_name: "Make sure to use a valid name."
+input_num: "Please input a number."
+invalid_num: "Hmm... that doesn't look like a valid number"
+invalid_oper: "Please enter a valid operation."
+another: "Do you want to perform another calculation?"
+valediction: "Goodbye!"

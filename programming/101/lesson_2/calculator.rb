@@ -9,10 +9,6 @@ def validate_number?(number)
   number.to_i.to_s == number || number.to_f.to_s == number
 end
 
-def number?(num)
-  
-end
-
 def oper_to_message(op)
   case op
   when '1'
@@ -33,31 +29,31 @@ name = ''
 loop do
   name = Kernel.gets().chomp()
   break if name.empty? == false
-  prompt("Make sure to use a valid name.")
+  prompt(MESSAGES['valid_name'])
 end
 
 # main loop
 loop do
   loop do
-    prompt("Please input a number.")
+    prompt(MESSAGES['input_num'])
     num1 = gets.chomp
 
     break unless validate_number?(num1) == false
-    prompt("Hmmm....that doesn't loop like a valid number.")
+    prompt(MESSAGES['invalid_num'])
   end
 
   loop do
-    prompt("Please input another number.")
+    prompt(MESSAGES['input_num'])
     num2 = gets.chomp
 
     break if validate_number?(num2)
-    prompt("Hmmm....that doesn't loop like a valid number.")
+    prompt(MESSAGES['invalid_num'])
   end
 
   oper_prompt = <<-MSG
-    What operation would you like me to perform? 
+    What operation would you like me to perform?
     1) add
-    2) subtract 
+    2) subtract
     3) multiply
     4) divide
   MSG
@@ -67,8 +63,8 @@ loop do
 
   loop do
     oper = Kernel.gets().chomp()
-     break if %w(1 2 3 4).include?(oper)
-     prompt("Please enter a valid operation.")
+    break if %w(1 2 3 4).include?(oper)
+    prompt(MESSAGES['invalid_oper'])
   end
 
   prompt("#{oper_to_message(oper)} your two numbers.")
@@ -86,9 +82,9 @@ loop do
            end
 
   prompt("Your solution is: #{result}.")
-  prompt("Do you want to perform another calculation?")
+  prompt(MESSAGES['another'])
   answer = Kernel.gets().chomp()
   break unless answer.downcase().start_with?('y')
 
-  prompt("Goodbye!")
+  prompt(MESSAGES['valediction'])
 end
