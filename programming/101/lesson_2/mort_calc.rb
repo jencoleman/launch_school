@@ -19,7 +19,7 @@ loop do
 
   loop do
     amt_loan = gets.chomp
-    break if valid_num?(amt_loan) && amt_loan.present?
+    break if valid_num?(amt_loan) && !amt_loan.empty?
     prompt(MESSAGES['invalid_number'])
   end
 
@@ -28,7 +28,7 @@ loop do
 
   loop do
     apr = gets.chomp
-    break if valid_num?(apr) && !apr.present?
+    break if valid_num?(apr) && !apr.empty?
     prompt(MESSAGES['invalid_number'])
   end
 
@@ -37,7 +37,7 @@ loop do
 
   loop do
     duration = gets.chomp
-    break if valid_num?(duration) && duration.present?
+    break if valid_num?(duration) && !duration.empty?
     prompt(MESSAGES['invalid_number'])
   end
 
@@ -45,7 +45,7 @@ loop do
   month_rate = annual_percentage / 12
   months = duration.to_i * 12
   month_pay = (amt_loan.to_f * ((month_rate * (1 + month_rate)**months) / ((1 + month_rate)**months - 1))).round(2)
-  prompt("Your loan of $#{amt_loan} at #{apr}% APR for #{months} months has a monthly payment of #{month_pay}.")
+  prompt("Your loan of $#{amt_loan} at #{apr}% APR for #{months} months has a monthly payment of $#{month_pay}.")
 
   prompt(MESSAGES['continue'])
   reply = gets.chomp
