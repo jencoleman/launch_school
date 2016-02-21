@@ -88,9 +88,9 @@ def computer_places_piece!(brd)
   end
 
   # available 5
-  if !square && empty_squares(brd).include?(5)
-    square = 5
-  end
+ # if !square && empty_squares(brd).include?(5)
+ #   square = 5
+ # end
 
   if !square
     square = empty_squares(brd).sample
