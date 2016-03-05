@@ -1,3 +1,15 @@
+class Score
+  attr_accessor :value
+
+  def initialize
+    @value = 0
+  end
+
+  def to_s
+    @value
+  end
+end
+
 class Move
   VALUES = %w(rock paper scissors).freeze
   
@@ -39,7 +51,11 @@ class Player
 
   def initialize
     set_name
-    @score = 0
+    set_score
+  end
+
+  def set_score
+    self.score = Score.new()
   end
 end
 
@@ -110,17 +126,17 @@ class RPSGame
 
   def keep_score
     if human.move > computer.move
-      human.score += 1
+      human.score.value+= 1
     elsif human.move < computer.move
-      computer.score += 1
+      computer.score.value += 1
     end
-    puts "The score is #{human.name}: #{human.score}, #{computer.name}: #{computer.score}"
-    puts "#{computer.name} won 10 rounds!" if computer.score == 10
-    puts "#{human.name} won 10 rounds!" if human.score == 10
+    puts "The score is #{human.name}: #{human.score.value}, #{computer.name}: #{computer.score.value}"
+    puts "#{computer.name} won 10 rounds!" if computer.score.value == 1
+    puts "#{human.name} won 10 rounds!" if human.score.value == 1
   end
 
   def win?
-    human.score == 10 || computer.score == 10
+    human.score.value == 1 || computer.score.value == 1
   end
 
   def play_again?
@@ -144,6 +160,8 @@ class RPSGame
       break if ['y', 'n'].include?(answer)
       puts "Please choose 'y' or 'n'."
     end
+    human.set_score
+    computer.set_score
     return true if ['Y', 'y'].include?(answer)
     return false
   end
@@ -160,7 +178,7 @@ class RPSGame
         break if win?
         break unless play_again?
       end
-      break unless new_game?
+      break unless new_game? == true
     end
     display_goodbye
   end
