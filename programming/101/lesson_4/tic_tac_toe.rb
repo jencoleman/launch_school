@@ -47,7 +47,7 @@ def joinor(array)
     new_array = array[0..(array.length - 2)]
     new_array.join(", ") + " or " + last_num
   elsif array.length == 1
-    array[0]
+    array[0].to_s
   end
 end
 

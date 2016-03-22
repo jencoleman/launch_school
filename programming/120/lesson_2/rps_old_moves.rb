@@ -1,3 +1,14 @@
+require 'singleton'
+
+class History
+  include Singleton
+
+  attr_accessor :value
+
+  def initialize
+    @value = []
+  end
+end
 class Move
   VALUES = %w(rock paper scissors).freeze
   
@@ -35,6 +46,7 @@ class Move
 end
 
 class Player
+  
   attr_accessor :move, :name, :score
 
   def initialize
@@ -48,6 +60,8 @@ class Player
 end
 
 class Human < Player
+  include Singleton
+  
   def set_name
     n = ""
     loop do
@@ -72,43 +86,53 @@ class Human < Player
 end
 
 class Computer < Player
+  include Singleton
+  
   def set_name
     self.name = ['GlaDOS', 'R2D2', 'Hal'].sample
   end
 
   def choose
-    first = (Move::VALUES).dup.keep_if{ |value| value != (computer_losing_play) }
-    self.move = Move.new(first.sample)
+    second =  Move::VALUES.dup
+    subset = second.keep_if{ |value| value != computer_losing_play() }
+    self.move = Move.new(subset.sample)
   end
-  
+
   def computer_losing_play
-    losses = RPSGame::old_moves.select{ |round| round["winner"] = human.name }
+    losses = History.instance.value.select{ |round| round["Winner"] = Human.instance.name }
 
     r = 0
-    p = 0
+    h = 0
     s = 0
 
     losses.each do |round|
-      if round[comupter.name] = 'rock'
+      if round["Computer"] = 'rock'
         r += 1
-      elsif round[computer.name] = 'paper'
-        p += 1
-      elsif round[computer.name] = 'scissors'
+      elsif round["Computer"] = 'paper'
+        h += 1
+      elsif round["Computer"] = 'scissors'
         s += 1
       end
     end
-    [r, p, s].sort.first
+    loser = [r, h, s].sort.last
+    if loser = r
+      return "rock"
+    elsif loser = h
+      return "paper"
+    elsif loser = s
+      return "scissors"
+    end
+    
   end
-  
 end
 
 class RPSGame
-  attr_accessor :human, :computer, :old_moves
+  attr_accessor :human, :computer, :history
 
   def initialize
-    @human = Human.new
-    @computer = Computer.new
-    @old_moves = []
+    @human = Human.instance
+    @computer = Computer.instance
+    @history = History.instance
   end
 
   def display_welcome_message
@@ -123,6 +147,7 @@ class RPSGame
     puts "#{human.name} chose #{human.move}."
     puts "#{computer.name} chose #{computer.move}."
   end
+
   
   def game_winner
     if human.move > computer.move
@@ -189,10 +214,9 @@ class RPSGame
   def store_moves
     game = {}
     game[human.name] = "#{human.move}"
-    game[computer.name] = "#{computer.move}"
-    game[computer.winner] = game_winner
-    old_moves.push(game)
-    puts old_moves
+    game["Computer"] = "#{computer.move}"
+    game["Winner"] = game_winner
+    history.value.push(game)
   end
   
   def show_moves
@@ -200,8 +224,8 @@ class RPSGame
     reply = gets.chomp
     if reply.start_with?('Y', 'y')
       puts "Here are the previous moves:"
-      old_moves.each do |round|
-        puts "Round #{old_moves.index(round) + 1}: "
+      history.value.each do |round|
+        puts "Round #{history.value.index(round) + 1}: "
         round.each do |player, move|
           puts "     #{player} => #{move}"
         end
