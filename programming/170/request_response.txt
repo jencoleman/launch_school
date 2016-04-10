@@ -1,0 +1,8 @@
+1. method, path. Can also have parameters, headers, body
+
+2. status is required. Headers and body are optional.
+
+3. GET retrieves content from the server, like read only
+POST changes values on the server, like an html form
+
+4. No. The host directs the request to the correct server, but is not part of the request
